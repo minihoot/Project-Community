@@ -1,0 +1,38 @@
+RewriteEngine on
+
+RewriteRule ^$ /index.php
+RewriteRule ^login$ /login.php
+RewriteRule ^logout$ /logout.php
+RewriteRule ^signup$ /signup.php
+RewriteRule ^activity$ /activity.php
+RewriteRule ^accept\/cookie$ /cookie.php [L,NC,QSA]
+RewriteRule ^communities\/([0-9]+)$ /communities.php?id=$1
+RewriteRule ^communities\/([0-9]+)\/topic$ /topic-list.php?id=$1
+RewriteRule ^communities\/([0-9]+)\/(un)?favorite\.json$ /favorite.php?id=$1&un=$2
+RewriteRule ^users\/([^\/]+)$ /user.php?username=$1
+RewriteRule ^users\/([^\/]+)\/(posts|yeahs)$ /user-posts.php?username=$1&type=$2 [L,NC,QSA]
+RewriteRule ^news\/my_news$ /news.php
+RewriteRule ^posts\/([0-9]+)$ /posts.php?id=$1
+RewriteRule ^posts\/([0-9]+)\/yeah(\.delete)?$ /yeah.php?id=$1&delete=$2
+RewriteRule ^guide$ /rules.php
+RewriteRule ^posts$ /create-post.php
+RewriteRule ^guide\/contact$ /contact.php
+RewriteRule ^settings\/profile$ /profile-settings.php
+RewriteRule ^check_update\.json$ /jsupdate.php
+
+php_flag display_errors off
+
+ErrorDocument 404 /404.php
+ErrorDocument 403 /403.php
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 24.61.157.95
+deny from 5.62.41.52
+deny from 5.62.47.71
+deny from 77.234.46.220
+deny from 5.62.0.0/16
+deny from 5.62.39.49
+deny from 195.181.160.247
