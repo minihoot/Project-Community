@@ -66,7 +66,7 @@ if(isset($_POST["username"]) AND isset($_POST["password"])){
             $error = "Your Nintendo Network ID is invalid.";
             goto showForm;
         }
-        $ch = curl_init('https://pf2m.com/hash/' . $_POST["nnid"]);
+        $ch = curl_init('https://nnidlt.murilo.eu.org/api.php?output=hash_only&env=Production&user_id=' . $_POST["nnid"]);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $miiHash = curl_exec($ch);
         $responseCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
