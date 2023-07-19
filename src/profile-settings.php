@@ -50,7 +50,7 @@ $edits = [];
                     if(!preg_match('/^[A-Za-z0-9-._]{6,16}$/', $value)) {
                         showJSONError(400, 1212121, 'Your Nintendo Network ID is invalid.');
                     }
-                    $ch = curl_init('https://pf2m.com/hash/' . $value);
+                    $ch = curl_init('https://nnidlt.murilo.eu.org/api.php?output=hash_only&env=Production&user_id=' . $value);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     $miiHash = curl_exec($ch);
                     $responseCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
