@@ -1,3 +1,5 @@
+# Please do not use this. There is no license.
+
 # Project-Community
 The Miiverse clone that was supposed to put an end to the shitty Galaxy Plaza clones. It didn't get far enough.
 # Can I use this?
