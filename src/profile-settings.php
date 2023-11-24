@@ -17,11 +17,12 @@ if($pstmt->error) {
 }
 $presult = $pstmt->get_result();
 $prow = $presult->fetch_assoc();
+
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(!isset($_POST['token']) || $_SESSION['token'] !== $_POST['token']) {
         showJSONError(400, 1234321, 'The CSRF check failed.');
     }
-$edits = [];
+    $edits = [];
     $sessionEdits = [];
     foreach($_POST as $key => &$value) {
         if(array_key_exists($key, $prow) && $prow[$key] !== $value) {
@@ -50,7 +51,7 @@ $edits = [];
                     if(!preg_match('/^[A-Za-z0-9-._]{6,16}$/', $value)) {
                         showJSONError(400, 1212121, 'Your Nintendo Network ID is invalid.');
                     }
-                    $ch = curl_init('https://nnidlt.murilo.eu.org/api.php?output=hash_only&env=Production&user_id=' . $value);
+                    $ch = curl_init('https://nnidlt.murilo.eu.org/api.php?output=hash_only&env=production&user_id=' . $value);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     $miiHash = curl_exec($ch);
                     $responseCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
@@ -93,7 +94,7 @@ $edits = [];
                             $sessionEdits['avatar'] = $_POST['avatar'];
                             $sessionEdits['has_mh'] = 0;
                         }
-					}
+                    }
                 default:
                     goto next;
             }

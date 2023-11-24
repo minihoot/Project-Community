@@ -19,20 +19,20 @@ renderHeader("Home");
 			<h2 class="label">Welcome to <?=$GLOBALS['name']?>!</h2>
 			<div style="width: 90%; display: inline-block; padding-bottom: 10px;">
 				<p><br><?=$GLOBALS['name']?> is the revolutionary Miiverse Clone Experience. (Or at least, we tried to make it revolutionary.)</p>
-			<h2 class="memo-head">it starts with</h2>
-			<p>one thing</p>
+			<h2 class="memo-head">this is fucking amazing</h2>
+			<p>oh wait, it isnt</p>
 			<h2 class="memo-head">i don't know why</h2>
-			<p>it doesn't even matter how hard you try</p>
-			<h2 class="memo-head">keep that in mind</h2>
-			<p>that i designed this rhyme to explain in due time</p>
-			<h2 class="memo-head">all i know</h2>
-			<p>time is a valuable thing</p>
-			<h2 class="memo-head">watch it fly by as the pendulum swings</h2>
-			<p>watch it countdown to the end of the day</p>
-			<a href="/?light-mode=<?=$_SESSION["light_mode"]?>">the clock ticks life away</a>
+			<p>but its obvious</p>
+			<h2 class="memo-head">why am i doing this..</h2>
+			<p>im so fucking burnt out of rehosting mvcs, to be honest i may quit</p>
+			<h2 class="memo-head">chances are i wont</h2>
+			<p>time is valuable</p>
+			<h2 class="memo-head">and im wasting it every single fucking day</h2>
+			<p>when will i use my time wisely</p>
+				<p>this is currently in beta, expect broken and non-implemented shit</p>
+			<a href="/">eh, im done talking, here is a random button</a>
 			</div>
 		</div>
-		<iframe src="https://discord.com/widget?id=1008129762243387528&theme=dark" width="320" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         </div>
      <div class="community-main">
         <?php

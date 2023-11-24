@@ -25,7 +25,6 @@ $prow = $presult->fetch_assoc();
 }
 $is_general = true;
 renderHeader("Rules");
-require_once("elements/user-sidebar.php");
 ?>
 <div class="main-column" id="help">
 		<div class="post-list-outline">

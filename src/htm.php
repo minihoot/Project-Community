@@ -1,20 +1,21 @@
-cc<?php
+One second please..
+<?php
 // SETTINGS
-$GLOBALS['name'] = "Project Community"; // name 
-$GLOBALS['ssl'] = true; // force ssl
+$GLOBALS['name'] = "community.php"; // name 
+$GLOBALS['ssl'] = false; // force ssl
 $GLOBALS['vpn'] = false; // allow VPNs
-$GLOBALS['cloudflare'] = false; // only enable if youre using cloudflare
+$GLOBALS['cloudflare'] = true; // only enable if youre using cloudflare
 $GLOBALS['cname'] = "reverb"; // cloudinary cloudname (for img uploads.)
 $GLOBALS['cpreset'] = "reverb-mobile"; // cloudinary unsigned preset (for img uploads.)
 $GLOBALS['cendpoint'] = "https://api.cloudinary.com/v1_1/"; // idk.. do you have a custom cloudinary instance or smthn?
 $GLOBALS['mii_cdn_url'] = "https://mii-secure.cdn.nintendo.net/"; // What, do you have a custom mii CDN or something?
-$GLOBALS['timezone'] = "America/Los_Angeles"; // Maybe time's just a construct of human perception! An illusion created by-
-$GLOBALS['h-captcha-sitekey'] = ""; // h-captcha. set secret value to null to disable. used for login, signup and contact info.
-$GLOBALS['h-captcha-secret'] = ""; // h-captcha. set this value to null to disable. used for login, signup and contact info.
+$GLOBALS['timezone'] = "America/Detroit"; // Maybe time's just a construct of human perception! An illusion created by-
+$GLOBALS['h-captcha-sitekey'] = "1fe5521c-205a-42b1-accc-16ce4f6df756"; // h-captcha. set secret value to null to disable. used for login, signup and contact info.
+$GLOBALS['h-captcha-secret'] = "ES_752cbae791f24c48941ecffc365d8ddf"; // h-captcha. set this value to null to disable. used for login, signup and contact info.
 $GLOBALS['maintenance'] = false; // Activate maintenance mode
-$GLOBALS['maintenance_pass'] = "changeme"; // The password to give users a cookie to access the site
+$GLOBALS['maintenance_pass'] = "pikachu"; // The password to give users a cookie to access the site
 $GLOBALS['EOS'] = false; // End of service.
-$db = @mysqli_connect("localhost", "root", "root", "community"); // mysqli info
+$db = @mysqli_connect("localhost", "root", "root", "communityphp"); // mysqli info
 //——————————--—No DB connection?———————————
 //⠀⣞⢽⢪⢣⢣⢣⢫⡺⡵⣝⡮⣗⢷⢽⢽⢽⣮⡷⡽⣜⣜⢮⢺⣜⢷⢽⢝⡽⣝
 //⠸⡸⠜⠕⠕⠁⢁⢇⢏⢽⢺⣪⡳⡝⣎⣏⢯⢞⡿⣟⣷⣳⢯⡷⣽⢽⢯⣳⣫⠇
@@ -37,7 +38,6 @@ if (!$db)
 	require("500.php");
 	exit();
 }
-date_default_timezone_set($GLOBALS['timezone']);
 
 // Set Timezone in DB
 $db->query('SET time_zone = "' . $db->real_escape_string($GLOBALS['timezone']) . '"');
@@ -119,7 +119,7 @@ function loadcss($title){
         <meta property="og:locale" content="en_US">
         <meta property="og:title" content="<?php if(isset($title)){ echo $title." - "; } ?><?=$GLOBALS["name"]?>">
         <meta property="og:type" content="article">
-        <meta property="og:url" content="http<?=($_SERVER['HTTPS'] || HTTPS_PROXY) ? 's' : ''?>://<?=$_SERVER['SERVER_NAME']?>">
+        <meta property="og:url" content="http<?=((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']) || (isset($_SERVER['HTTPS_PROXY']) && $_SERVER['HTTPS_PROXY'])) ? 's' : ''?>://<?=$_SERVER['SERVER_NAME']?>">
         <meta property="og:description" content="<?=$GLOBALS['name']?> is a Miiverse clone that allows you to communicate with other users around the world.">
         <meta property="og:site_name" content="<?=$GLOBALS['name']?>">
         <meta name="twitter:card" content="summary">
@@ -127,8 +127,8 @@ function loadcss($title){
         <title><?=$title?> - <?=$GLOBALS['name']?></title>
         <link href="/assets/css/offdevice.css" rel="stylesheet">
         <?php
-        if($_SESSION["light_mode"] != true){ ?>
-        <link href="/assets/css/dark.css" rel="stylesheet">
+        if(!($_SESSION["light_mode"] ?? true)){ ?>
+        <link href="/assets/css/offdevice.css" rel="stylesheet">
         <?php } ?>
         <!-- add more shit here-->
         <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
