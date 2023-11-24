@@ -1,19 +1,19 @@
 One second please..
 <?php
 // SETTINGS
-$GLOBALS['name'] = "community.php"; // name 
+$GLOBALS['name'] = "Project Community"; // name 
 $GLOBALS['ssl'] = false; // force ssl
 $GLOBALS['vpn'] = false; // allow VPNs
-$GLOBALS['cloudflare'] = true; // only enable if youre using cloudflare
+$GLOBALS['cloudflare'] = false; // only enable if youre using cloudflare
 $GLOBALS['cname'] = "reverb"; // cloudinary cloudname (for img uploads.)
+// you won't have to fill cloudinary stuff out unless you want to use your cloudinary account
 $GLOBALS['cpreset'] = "reverb-mobile"; // cloudinary unsigned preset (for img uploads.)
 $GLOBALS['cendpoint'] = "https://api.cloudinary.com/v1_1/"; // idk.. do you have a custom cloudinary instance or smthn?
 $GLOBALS['mii_cdn_url'] = "https://mii-secure.cdn.nintendo.net/"; // What, do you have a custom mii CDN or something?
-$GLOBALS['timezone'] = "America/Detroit"; // Maybe time's just a construct of human perception! An illusion created by-
 $GLOBALS['h-captcha-sitekey'] = "1fe5521c-205a-42b1-accc-16ce4f6df756"; // h-captcha. set secret value to null to disable. used for login, signup and contact info.
 $GLOBALS['h-captcha-secret'] = "ES_752cbae791f24c48941ecffc365d8ddf"; // h-captcha. set this value to null to disable. used for login, signup and contact info.
 $GLOBALS['maintenance'] = false; // Activate maintenance mode
-$GLOBALS['maintenance_pass'] = "pikachu"; // The password to give users a cookie to access the site
+$GLOBALS['maintenance_pass'] = "changeme"; // The password to give users a cookie to access the site
 $GLOBALS['EOS'] = false; // End of service.
 $db = @mysqli_connect("localhost", "root", "root", "communityphp"); // mysqli info
 //——————————--—No DB connection?———————————
@@ -39,8 +39,6 @@ if (!$db)
 	exit();
 }
 
-// Set Timezone in DB
-$db->query('SET time_zone = "' . $db->real_escape_string($GLOBALS['timezone']) . '"');
 
 /*
 DO NOT TOUCH BELOW UNLESS YOU KNOW WHAT YOU ARE DOING.
